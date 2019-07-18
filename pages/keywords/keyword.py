@@ -189,7 +189,6 @@ class BaseKeyword(object):
         :param file_name: file path
         :return: None
         """
-        # element = self.find_element("//input[@class='gwt-FileUpload']")
         element = self._driver.find_element(By.XPATH,loc)
         upload_path = os.path.join(os.path.dirname(os.getcwd()),"upload",file_name)
         try:
