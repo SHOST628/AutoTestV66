@@ -6,6 +6,8 @@ from engine.demotestcase import DemoTestCase
 from pages.keywords.actionkeyword import Action
 
 
+# TODO: add function to check which case can exectute or can not execute and add to report
+
 def generate_testcases(testcaseid_list):
     if testcaseid_list == []:
         logger.info("找不到基础用例信息")
@@ -33,10 +35,12 @@ def generate_testcases(testcaseid_list):
 
     oracle.close()
 
-
+# TODO:NOTICE
 # bug: it can  still generate mix testcase if has a true caseid although contains false caseid
+# no checking : you don't know a true caseid
+# add checking : case fails if a false caseid
 def generate_mix_testcase(mixcase_list):
-    if mixcase_list == []:
+    if not mixcase_list:
         logger.info("没有需要组合的用例")
         return None
     oracle = Oracle(readconfig.db_url)
@@ -95,4 +99,3 @@ def generate_testsuite(testcaseid_list, mixid_list):
     logger.debug("已组合全部测试套件 %s" % suite)
     logger.debug("<测试套件组合结束>")
     return suite
-

@@ -34,10 +34,10 @@ def run(testsuite):
 
 
 if __name__ == "__main__":
-    generate_testcases(testcaseid_list)
-    generate_mix_testcase(mixcase_list)
-    testsuite = generate_testsuite(testcaseid_list, mixid_list)
-    if testsuite:
+    if testcaseid_list or mixcase_list:
+        generate_testcases(testcaseid_list)
+        generate_mix_testcase(mixcase_list)
+        testsuite = generate_testsuite(testcaseid_list, mixid_list)
         logger.info("【开始执行用例】")
         report_path = run(testsuite)
         logger.info("【结束执行用例】")
